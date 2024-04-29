@@ -1,0 +1,24 @@
+{
+    "functions": {
+      "api": {
+        "handler": "django/serverless.handler",
+        "memory": 1024 
+      }
+    },
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/api/$1" }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      }
+    ],
+    "builds": [
+      {
+        "src": "classmanager/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ]
+  }
+  
